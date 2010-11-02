@@ -12,7 +12,7 @@ change in API: use :conditions instead of :requirements.
 
 == Installation
 
-    ruby script/plugin install http://svn.vivabit.net/external/rubylibs/request_routing/
+    ruby script/plugin install git://github.com/fractious/request_routing.git
 
 == Usage
 
