@@ -2,7 +2,7 @@ Request Routing Plugin for Ruby on Rails
 ========================================
 (c) Dan Webb 2006 (dan@vivabit.com)
 
-Plugin that allows you to define routing conditions that test 
+Plugin that allows you to define routing conditions that test
 methods/properties of the request object such as subdomain, domain,
 port.  You can test them either against a value or with a `Regexp`
 (assuming the method returns a `String`)
@@ -31,9 +31,9 @@ The allowed properties are:
     :host (not supported on rails 1.x. - tested against rails 2.3.9)
     :method (a symbol)
     :port (a number)
-    :remote_ip 
+    :remote_ip
     :content_type (content type of the post body)
-    :accepts 
+    :accepts
     :request_uri (the entire request uri)
     :protocol (either http:// or https://)
 
