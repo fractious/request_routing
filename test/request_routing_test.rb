@@ -13,7 +13,7 @@ class OtherTestController < Class.new(ActionController::Base)
   end
 end
 
-class MockRequest < Struct.new(:path, :subdomains, :method, :remote_ip, :protocol, :path_parameters, :domain, :port, :content_type, :accepts, :request_uri)
+class MockRequest < Struct.new(:path, :subdomains, :method, :remote_ip, :protocol, :path_parameters, :domain, :host, :port, :content_type, :accepts, :request_uri)
 end
 
 class RequestRoutingTest < Test::Unit::TestCase
@@ -30,6 +30,7 @@ class RequestRoutingTest < Test::Unit::TestCase
       'http://',
       '',
       'thing.com',
+      'www.thing.com',
       3432,
       'text/html',
       ['*/*'],
@@ -55,7 +56,17 @@ class RequestRoutingTest < Test::Unit::TestCase
       @rs.recognize(@request)
     end
   end
-  
+
+  def test_host
+    @rs.draw { |m| m.connect 'thing', :controller => 'test', :conditions => { :host => 'www.thing.com' }  }
+    @request.path = '/thing'
+    assert(@rs.recognize(@request))
+    @request.host = 'www.otherthing.com'
+    assert_raise(ActionController::RoutingError) do
+      @rs.recognize(@request)
+    end
+  end
+
   def test_protocol
     @rs.draw { |m| m.connect 'thing', :controller => 'test', :conditions => { :protocol => /^https/ }  }
     @request.path = '/thing'
