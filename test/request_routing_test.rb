@@ -1,7 +1,6 @@
 require 'test/unit'
 require 'rubygems'
-require '/Users/danwebb/lib/edgerails/actionpack/lib/action_controller.rb'
-#require_gem 'actionpack'
+require 'action_controller'
 require File.dirname(__FILE__) + "/../init"
 
 class TestController < Class.new(ActionController::Base)
