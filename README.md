@@ -4,19 +4,19 @@ Request Routing Plugin for Ruby on Rails
 
 Plugin that allows you to define routing conditions that test 
 methods/properties of the request object such as subdomain, domain,
-port.  You can test them either against a value or with a Regexp
-(assuming the method returns a string)
+port.  You can test them either against a value or with a `Regexp`
+(assuming the method returns a `String`)
 
 *UPDATE* Now works with the new routing code as implemented in edge rails.  Note the
-change in API: use :conditions instead of :requirements.
+change in API: use `:conditions` instead of `:requirements`.
 
-== Installation
+## Installation
 
     ruby script/plugin install git://github.com/fractious/request_routing.git
 
-== Usage
+## Usage
 
-In routes.rb you can specify use the :requirements hash with request properties:
+In routes.rb you can specify use the `:conditions` hash with request properties:
 
     map.connect '', :controller => 'main', :conditions => { :subdomain => 'www' }
 
@@ -26,14 +26,14 @@ You can also, of course, use the conditions hash in map.with_options calls.
 
 The allowed properties are:
 
-		:subdomain  (only checks the first subdomain)
-		:domain (only accurate for single tld domain names at the moment)
-		:host (not supported on rails 1.x. - tested against rails 2.3.9)
-		:method (a symbol)
-		:port (a number)
-		:remote_ip 
-		:content_type (content type of the post body)
-		:accepts 
-		:request_uri (the entire request uri)
-		:protocol (either http:// or https://)
+    :subdomain (only checks the first subdomain)
+    :domain (only accurate for single tld domain names at the moment)
+    :host (not supported on rails 1.x. - tested against rails 2.3.9)
+    :method (a symbol)
+    :port (a number)
+    :remote_ip 
+    :content_type (content type of the post body)
+    :accepts 
+    :request_uri (the entire request uri)
+    :protocol (either http:// or https://)
 
